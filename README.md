@@ -1,24 +1,29 @@
-# README
+## Running in development mode
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Dependencies: 
+- Ruby 3.1
+- PostgreSQL
+- Node.js
 
-Things you may want to cover:
+Fill credentials in `.env` file as
+```
+KALASHNIKOV_ESTATE_DATABASE_USERNAME=your_postgres_username
+KALASHNIKOV_ESTATE_DATABASE_PASSWORD=your_postgres_password
+```
 
-* Ruby version
+Install dependencies:
+```bash
+bundle install
+npm install
+```
+Run the frontend dev build:
 
-* System dependencies
+```bash
+foreman start -f Procfile.dev
+```
 
-* Configuration
+Run the web server from IDE or from terminal with
+```bash
+rails s
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
