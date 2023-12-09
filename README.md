@@ -27,3 +27,6 @@ Run the web server from IDE or from terminal with
 rails s
 ```
 
+link to the design layout of the site
+[KalashnikovEstate](https://www.figma.com/file/gOx0BsfvX7XX6vd7JbuO1V/Kalashnikov-Manor?type=design&node-id=0%3A1&mode=design&t=g9vmJnMY0YCbzxj2-1)
+
