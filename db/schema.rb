@@ -10,8 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 0) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_12_213858) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "goods", force: :cascade do |t|
+    t.string "nomenclature", null: false
+    t.float "price", null: false
+    t.text "description"
+    t.integer "category", null: false
+    t.binary "picture"
+    t.integer "quantity", null: false
+    t.string "measure", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nomenclature"], name: "index_goods_on_nomenclature", unique: true
+  end
 
 end
