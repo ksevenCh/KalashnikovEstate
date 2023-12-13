@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/KalashnikovEstate</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="kalash_dev@localhost" uuid="e2174212-598d-4af0-9fc9-0a377972f504">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/kalashnikov_estate_development</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
