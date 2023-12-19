@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог товаров</title>
+</head>
+<body>
+<h1>Каталог товаров</h1>
+<%= link_to 'Каталог товаров', '/catalog', method: :get %>
+<%= link_to 'Мой заказ', '/mycart', method: :get %>
+<div>
+  <div>
+    <img src="placeholder.jpg" alt="Изображение товара">
+    <div>
+      <label for="product1">Название товара</label>
+      <span>100 руб</span>
+      <button>|+|</button>
+    </div>
+  </div>
+  <div>
+    <img src="placeholder.jpg" alt="Изображение товара">
+    <div>
+      <label for="product1">Название товара</label>
+      <span>100 руб</span>
+      <button>|+|</button>
+    </div>
+  </div>
+  <div>
+    <img src="placeholder.jpg" alt="Изображение товара">
+    <div>
+      <label for="product1">Название товара</label>
+      <span>100 руб</span>
+      <button>|+|</button>
+    </div>
+  </div>
+  <div>
+    <img src="placeholder.jpg" alt="Изображение товара">
+    <div>
+      <label for="product1">Название товара</label>
+      <span>100 руб</span>
+      <button>|+|</button>
+    </div>
+  </div>
+  <div>
+    <img src="placeholder.jpg" alt="Изображение товара">
+    <div>
+      <label for="product1">Название товара</label>
+      <span>100 руб</span>
+      <button>|+|</button>
+    </div>
+  </div>
+  <div>
+    <img src="placeholder.jpg" alt="Изображение товара">
+    <div>
+      <label for="product1">Название товара</label>
+      <span>100 руб</span>
+      <button>|+|</button>
+    </div>
+  </div>
+  <!-- Повторите блок выше для остальных товаров -->
+</div>
+</body>
+
+<style>
+    a {
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        padding: 10px 20px;
+        background-color: #f4f4f4;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #e4e4e4;
+    }
+
+    a:active {
+        background-color: #d4d4d4;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    button {
+        margin: 5px;
+    }
+
+    div {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+        border: 1px solid #b4b4b4;
+        border-radius: 1px;
+    }
+
+    div > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+    }
+
+    label {
+        margin-top: 5px;
+        font-weight: bold;
+    }
+
+    span {
+        margin-top: 5px;
+        font-weight: bold;
+    }
+
+    button {
+        margin-top: 5px;
+        cursor: pointer;
+        border: 5px solid #00ff8a;
+        border-radius: 1px;
+    }
+</style>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Мой заказ</title>
+</head>
+<body>
+<h1>Мой заказ</h1>
+<%= link_to 'Каталог товаров', '/catalog', method: :get %>
+<%= link_to 'Мой заказ', '/mycart', method: :get %>
+<div class="product">
+  <img src="placeholder.jpg" alt="Изображение товара">
+  <div class="product-info">
+    <h2>Название товара</h2>
+    <div class="counter">
+      <button>-</button>
+      <span>0</span>
+      <button>+</button>
+    </div>
+    <p class="price">100 руб</p>
+  </div>
+</div>
+<!-- Повторите блок выше для остальных товаров -->
+<h2>Сумма заказа</h2>
+<p>Стоимость товаров: <span id="total-price">0</span> руб</p>
+<%= link_to 'Оформить заказ', '/thanks', method: :get %>
+</body>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        padding: 10px 20px;
+        background-color: #b4b4b4;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #e4e4e4;
+    }
+
+    a:active {
+        background-color: #d4d4d4;
+    }
+
+    .product {
+        display: flex;
+        margin: 20px;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .product img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin-right: 20px;
+    }
+
+    .product-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .counter {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .counter button {
+        padding: 5px 10px;
+        margin: 0 5px;
+        border: 1px solid #000;
+        cursor: pointer;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .price {
+        font-weight: bold;
+    }
+
+    #total-price {
+        font-weight: bold;
+        color: #ff0000;
+        font-size: 20px;
+        margin: 0 5px;
+    }
+
+    button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        border: none;
+        background-color: #ff0000;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #cc0000;
+    }
+</style>
+
+</html>
