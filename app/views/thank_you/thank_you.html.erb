@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Спасибо за покупку</title>
+</head>
+<body>
+<%= link_to 'Каталог товаров', '/catalog', method: :get %>
+<%= link_to 'Мой заказ', '/mycart', method: :get %>
+<h1>Спасибо за покупку</h1>
+</body>
+
+<style>
+    a {
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        padding: 10px 20px;
+        background-color: #f4f4f4;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #e4e4e4;
+    }
+
+    a:active {
+        background-color: #d4d4d4;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 36px;
+    }
+
+</style>
+
+</html>

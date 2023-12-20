@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<%= link_to 'Каталог товаров', '/catalog', method: :get %>
+<%= link_to 'Мой заказ', '/mycart', method: :get %>
+<div class="product">
+  <div class="details">
+    <ul>
+      <%- @goods.select { |good| good.id == 1 }.each do |good| %>
+        <li>
+          <%= "#{good.nomenclature}" %>
+          <%= image_tag("redapple.jpg", alt: "Rails logo") %>
+          <p><%= "#{good.price} #{good.measure}" %></p>
+        </li>
+        <%= link_to '+', additem_path(good_id: good.id), method: :get %>
+      <% end %>
+      <button onclick="showProductDetails1()">Показать товар</button>
+    </ul>
+
+
+  </div>
+</div>
+
+<div class="product">
+  <div class="details">
+    <ul>
+      <%- @goods.select { |good| good.id == 2 }.each do |good| %>
+        <li>
+          <%= "#{good.nomenclature}" %>
+          <%= image_tag("yelapple.jpg", alt: "Rails logo") %>
+          <p><%= "#{good.price} #{good.measure}" %></p>
+        </li>
+        <%= link_to '+', additem_path(good_id: good.id), method: :get %>
+      <% end %>
+    </ul>
+
+    <button onclick="showProductDetails2()">Показать товар</button>
+  </div>
+</div>
+
+<div class="product">
+  <div class="details">
+    <ul>
+      <%- @goods.select { |good| good.id == 3 }.each do |good| %>
+        <li>
+          <%= "#{good.nomenclature}" %>
+          <%= image_tag("greenapple.jpg", alt: "Rails logo") %>
+          <p><%= "#{good.price} #{good.measure}" %></p>
+        </li>
+        <%= link_to '+', additem_path(good_id: good.id), method: :get %>
+      <% end %>
+    </ul>
+
+    <button onclick="showProductDetails3()">Показать товар</button>
+  </div>
+</div>
+
+<div id="productDetailsModal1" class="modal" >
+  <div class="modal-content">
+    <span class="close" onclick="closeProductDetailsModal1()">&times;</span>
+    <ul>
+      <%- @goods.select { |good| good.id == 1 }.each do |good| %>
+        <li>
+          <%= "#{good.nomenclature}" %>
+          <%= image_tag("redapple.jpg", alt: "Rails logo") %>
+          <h3>Описание:</h3>
+          <%= "#{good.description}" %>
+          <p><%= "#{good.price} #{good.measure}" %></p>
+        </li>
+        <%= link_to 'Добавить в корзину', additem_path(good_id: good.id), method: :get %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div id="productDetailsModal2" class="modal" >
+      <div class="modal-content">
+        <span class="close" onclick="closeProductDetailsModal2()">&times;</span>
+        <ul>
+          <%- @goods.select { |good| good.id == 2 }.each do |good| %>
+            <li>
+              <%= "#{good.nomenclature}" %>
+              <%= image_tag("yelapple.jpg", alt: "Rails logo") %>
+              <h3>Описание:</h3>
+              <%= "#{good.description}" %>
+              <p><%= "#{good.price} #{good.measure}" %></p>
+            </li>
+            <%= link_to 'Добавить в корзину', additem_path(good_id: good.id), method: :get %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+<div id="productDetailsModal3" class="modal" >
+          <div class="modal-content">
+            <span class="close" onclick="closeProductDetailsModal3()">&times;</span>
+            <ul>
+              <%- @goods.select { |good| good.id == 3 }.each do |good| %>
+                <li>
+                  <%= "#{good.nomenclature}" %>
+                  <%= image_tag("greenapple.jpg", alt: "Rails logo") %>
+                  <h3>Описание:</h3>
+                  <%= "#{good.description}" %>
+                  <p><%= "#{good.price} #{good.measure}" %></p>
+                </li>
+                <%= link_to 'Добавить в корзину', additem_path(good_id: good.id), method: :get %>
+              <% end %>
+            </ul>
+     </div>
+    </div>
+</body>
+
+<style>
+    a {
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        padding: 10px 20px;
+        background-color: #d8ffba;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #a8ff00;
+    }
+
+    a:active {
+        background-color: #00ff8a;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+
+    .product {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        border: 5px solid #d8ffba;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product img {
+        width: 150px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .details {
+        text-align: center;
+    }
+
+    .modal-content {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fefefe;
+        padding: 50px;
+        text-align: center;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    button {
+        width: 50%;
+        padding: 1px;
+        background-color: #4caf50;
+        color: #e7ffcd;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+
+</html>
+
+<%= javascript_tag do %>
+  // Отображение модального окна
+  function showProductDetails1() {
+  var modal = document.getElementById("productDetailsModal1");
+  modal.style.display = "block";
+  }
+  function showProductDetails2() {
+  var modal = document.getElementById("productDetailsModal2");
+  modal.style.display = "block";
+  }
+  function showProductDetails3() {
+  var modal = document.getElementById("productDetailsModal3");
+  modal.style.display = "block";
+  }
+
+  // Закрытие модального окна
+  function closeProductDetailsModal1() {
+  var modal = document.getElementById("productDetailsModal1");
+  modal.style.display = "none";
+  }
+  function closeProductDetailsModal2() {
+  var modal = document.getElementById("productDetailsModal2");
+  modal.style.display = "none";
+  }
+  function closeProductDetailsModal3() {
+  var modal = document.getElementById("productDetailsModal3");
+  modal.style.display = "none";
+  }
+<% end %>

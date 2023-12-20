@@ -7,4 +7,22 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  root 'users#login'
+
+  get '/login', to: 'users#login'
+  post '/enter', to: 'users#enter'
+
+  get '/registration', to: 'users#registration'
+  post '/create', to: 'users#create'
+
+  get '/products', to: 'products#index'
+  get '/catalog', to: 'products#catalog'
+
+
+  get '/cart', to: 'cart#index'
+  get '/mycart', to: 'cart#cart'
+  get '/additem', to: 'cart#additem'
+
+  get '/thank_you', to: 'thank_you#index'
+  get '/thanks', to: 'thank_you#thank_you'
 end
