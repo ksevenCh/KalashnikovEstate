@@ -1,14 +1,20 @@
 class ProductsController < ApplicationController
   def index
-    @products = Goods.all
+    #@goods = good.all
   end
 
-  def products
 
+  def catalog
+    @goods = Good.all
+    @cart_part = CartPart.new
+    render 'products/products'
   end
 
-  def add_to_cart
-    # код для добавления товара в корзину
+
+  private
+  def good_params
+    params.require(:good).permit(:id,:nomenclature, :price, :category, :quantity, :measure)
   end
+
 end
 

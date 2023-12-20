@@ -16,10 +16,12 @@ Rails.application.routes.draw do
   post '/create', to: 'users#create'
 
   get '/products', to: 'products#index'
-  get '/catalog', to: 'products#products'
+  get '/catalog', to: 'products#catalog'
+
 
   get '/cart', to: 'cart#index'
   get '/mycart', to: 'cart#cart'
+  get '/additem', to: 'cart#additem'
 
   get '/thank_you', to: 'thank_you#index'
   get '/thanks', to: 'thank_you#thank_you'

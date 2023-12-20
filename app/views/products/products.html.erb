@@ -4,11 +4,17 @@
 <%= link_to 'Каталог товаров', '/catalog', method: :get %>
 <%= link_to 'Мой заказ', '/mycart', method: :get %>
 <div class="product">
-  <%= image_tag("redapple.jpg", alt: "Rails logo") %>
   <div class="details">
-    <h2>Название товара</h2>
-    <span>100 руб/кг</span>
-    <button>+</button>
+    <ul>
+      <%- @goods.each do |good| %>
+        <li>
+          <%= "#{good.nomenclature}" %>
+          <%= image_tag("redapple.jpg", alt: "Rails logo") %>
+          <p><%= "#{good.price} #{good.measure}" %></p>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to '+', '/additem', method: :get %>
     <button onclick="showProductDetails()">Показать товар</button>
   </div>
 </div>
@@ -16,12 +22,18 @@
 <div id="productDetailsModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeProductDetailsModal()">&times;</span>
-    <h2>Название товара</h2>
-    <%= image_tag("redapple.jpg", alt: "Rails logo") %>
-    <h3>Описание:</h3>
-    <p>Описание товара...</p>
-    <span>100 руб/кг</span>
-    <button>Добавить в корзину</button>
+    <ul>
+      <%- @goods.each do |good| %>
+        <li>
+          <%= "#{good.nomenclature}" %>
+          <%= image_tag("redapple.jpg", alt: "Rails logo") %>
+          <h3>Описание:</h3>
+          <%= "#{good.description}" %>
+          <p><%= "#{good.price} #{good.measure}" %></p>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to 'Добавить в корзину', '/additem', method: :get %>
   </div>
 </div>
 </body>
@@ -32,17 +44,17 @@
         color: #000;
         font-weight: bold;
         padding: 10px 20px;
-        background-color: #f4f4f4;
+        background-color: #d8ffba;
         border-radius: 5px;
         transition: background-color 0.3s ease;
     }
 
     a:hover {
-        background-color: #e4e4e4;
+        background-color: #a8ff00;
     }
 
     a:active {
-        background-color: #d4d4d4;
+        background-color: #00ff8a;
     }
     body {
         font-family: Arial, sans-serif;
