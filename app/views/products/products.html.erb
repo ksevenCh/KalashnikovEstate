@@ -6,24 +6,60 @@
 <div class="product">
   <div class="details">
     <ul>
-      <%- @goods.each do |good| %>
+      <%- @goods.select { |good| good.id == 1 }.each do |good| %>
         <li>
           <%= "#{good.nomenclature}" %>
           <%= image_tag("redapple.jpg", alt: "Rails logo") %>
           <p><%= "#{good.price} #{good.measure}" %></p>
         </li>
+        <%= link_to '+', additem_path(good_id: good.id), method: :get %>
       <% end %>
+      <button onclick="showProductDetails1()">Показать товар</button>
     </ul>
-    <%= link_to '+', '/additem', method: :get %>
-    <button onclick="showProductDetails()">Показать товар</button>
+
+
   </div>
 </div>
 
-<div id="productDetailsModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeProductDetailsModal()">&times;</span>
+<div class="product">
+  <div class="details">
     <ul>
-      <%- @goods.each do |good| %>
+      <%- @goods.select { |good| good.id == 2 }.each do |good| %>
+        <li>
+          <%= "#{good.nomenclature}" %>
+          <%= image_tag("yelapple.jpg", alt: "Rails logo") %>
+          <p><%= "#{good.price} #{good.measure}" %></p>
+        </li>
+        <%= link_to '+', additem_path(good_id: good.id), method: :get %>
+      <% end %>
+    </ul>
+
+    <button onclick="showProductDetails2()">Показать товар</button>
+  </div>
+</div>
+
+<div class="product">
+  <div class="details">
+    <ul>
+      <%- @goods.select { |good| good.id == 3 }.each do |good| %>
+        <li>
+          <%= "#{good.nomenclature}" %>
+          <%= image_tag("greenapple.jpg", alt: "Rails logo") %>
+          <p><%= "#{good.price} #{good.measure}" %></p>
+        </li>
+        <%= link_to '+', additem_path(good_id: good.id), method: :get %>
+      <% end %>
+    </ul>
+
+    <button onclick="showProductDetails3()">Показать товар</button>
+  </div>
+</div>
+
+<div id="productDetailsModal1" class="modal" >
+  <div class="modal-content">
+    <span class="close" onclick="closeProductDetailsModal1()">&times;</span>
+    <ul>
+      <%- @goods.select { |good| good.id == 1 }.each do |good| %>
         <li>
           <%= "#{good.nomenclature}" %>
           <%= image_tag("redapple.jpg", alt: "Rails logo") %>
@@ -31,11 +67,47 @@
           <%= "#{good.description}" %>
           <p><%= "#{good.price} #{good.measure}" %></p>
         </li>
+        <%= link_to 'Добавить в корзину', additem_path(good_id: good.id), method: :get %>
       <% end %>
     </ul>
-    <%= link_to 'Добавить в корзину', '/additem', method: :get %>
   </div>
 </div>
+
+<div id="productDetailsModal2" class="modal" >
+      <div class="modal-content">
+        <span class="close" onclick="closeProductDetailsModal2()">&times;</span>
+        <ul>
+          <%- @goods.select { |good| good.id == 2 }.each do |good| %>
+            <li>
+              <%= "#{good.nomenclature}" %>
+              <%= image_tag("yelapple.jpg", alt: "Rails logo") %>
+              <h3>Описание:</h3>
+              <%= "#{good.description}" %>
+              <p><%= "#{good.price} #{good.measure}" %></p>
+            </li>
+            <%= link_to 'Добавить в корзину', additem_path(good_id: good.id), method: :get %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+<div id="productDetailsModal3" class="modal" >
+          <div class="modal-content">
+            <span class="close" onclick="closeProductDetailsModal3()">&times;</span>
+            <ul>
+              <%- @goods.select { |good| good.id == 3 }.each do |good| %>
+                <li>
+                  <%= "#{good.nomenclature}" %>
+                  <%= image_tag("greenapple.jpg", alt: "Rails logo") %>
+                  <h3>Описание:</h3>
+                  <%= "#{good.description}" %>
+                  <p><%= "#{good.price} #{good.measure}" %></p>
+                </li>
+                <%= link_to 'Добавить в корзину', additem_path(good_id: good.id), method: :get %>
+              <% end %>
+            </ul>
+     </div>
+    </div>
 </body>
 
 <style>
@@ -85,6 +157,7 @@
     }
 
     .modal-content {
+        display: block;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -119,14 +192,30 @@
 
 <%= javascript_tag do %>
   // Отображение модального окна
-  function showProductDetails() {
-  var modal = document.getElementById("productDetailsModal");
+  function showProductDetails1() {
+  var modal = document.getElementById("productDetailsModal1");
+  modal.style.display = "block";
+  }
+  function showProductDetails2() {
+  var modal = document.getElementById("productDetailsModal2");
+  modal.style.display = "block";
+  }
+  function showProductDetails3() {
+  var modal = document.getElementById("productDetailsModal3");
   modal.style.display = "block";
   }
 
   // Закрытие модального окна
-  function closeProductDetailsModal() {
-  var modal = document.getElementById("productDetailsModal");
+  function closeProductDetailsModal1() {
+  var modal = document.getElementById("productDetailsModal1");
+  modal.style.display = "none";
+  }
+  function closeProductDetailsModal2() {
+  var modal = document.getElementById("productDetailsModal2");
+  modal.style.display = "none";
+  }
+  function closeProductDetailsModal3() {
+  var modal = document.getElementById("productDetailsModal3");
   modal.style.display = "none";
   }
 <% end %>
