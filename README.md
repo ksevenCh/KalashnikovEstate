@@ -15,7 +15,14 @@ Install dependencies:
 ```bash
 bundle install
 npm install
+gem install foreman
 ```
+
+After creating `.env` file:
+```bash
+bundle exec rake db:create
+```
+
 Run the frontend dev build:
 
 ```bash

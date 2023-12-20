@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Форма регистрации</title>
+</head>
+<body>
+<h2>Форма регистрации</h2>
+
+<%= form_with(model: @user, url: '/create') do |form| %>
+  <div>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+  <div>
+    <%= form.label :login %>
+    <%= form.text_field :login %>
+  </div>
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+  <div>
+    <%= form.label :phone_num %>
+    <%= form.text_field :phone_num %>
+  </div>
+  <div>
+    <%= form.submit "Зарегистрироваться" %>
+  </div>
+<% end %>
+<form>
+  <%= link_to 'Уже есть аккаунт? Войти', '/login', method: :get %>
+</form>
+</body>
+
+<style>
+    a {
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        padding: 10px 20px;
+        background-color: #f4f4f4;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+        background-color: #e4e4e4;
+    }
+
+    a:active {
+        background-color: #d4d4d4;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        max-width: 1500px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 5px rgb(168, 255, 0);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        border: 1px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+</html>
