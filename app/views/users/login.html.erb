@@ -7,16 +7,20 @@
 </head>
 <body>
 <h2>Форма входа</h2>
-<form action="/users/login_attempt" method="post">
+<%= form_with(model: @user, url: '/enter') do |form| %>
   <div>
-    <label for="login">Логин:</label>
-    <input type="text" id="login" name="login">
+    <%= form.label :login %>
+    <%= form.text_field :login %>
   </div>
   <div>
-    <label for="password">Пароль:</label>
-    <input type="password" id="password" name="password">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
   </div>
-  <%= link_to 'Войти', '/catalog', method: :get %>
+  <div>
+    <%= form.submit "Войти" %>
+  </div>
+<% end %>
+<form>
   <%= link_to 'Регистрация', '/registration', method: :get %>
 </form>
 </body>

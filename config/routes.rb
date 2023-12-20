@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root 'users#login'
 
   get '/login', to: 'users#login'
+  post '/enter', to: 'users#enter'
 
   get '/registration', to: 'users#registration'
   post '/create', to: 'users#create'

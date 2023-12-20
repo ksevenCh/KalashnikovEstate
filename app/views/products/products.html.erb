@@ -1,64 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Каталог товаров</title>
-</head>
 <body>
-<h1>Каталог товаров</h1>
 <%= link_to 'Каталог товаров', '/catalog', method: :get %>
 <%= link_to 'Мой заказ', '/mycart', method: :get %>
-<div>
-  <div>
-    <img src="placeholder.jpg" alt="Изображение товара">
-    <div>
-      <label for="product1">Название товара</label>
-      <span>100 руб</span>
-      <button>|+|</button>
-    </div>
+<div class="product">
+  <%= image_tag("redapple.jpg", alt: "Rails logo") %>
+  <div class="details">
+    <h2>Название товара</h2>
+    <span>100 руб/кг</span>
+    <button>+</button>
+    <button onclick="showProductDetails()">Показать товар</button>
   </div>
-  <div>
-    <img src="placeholder.jpg" alt="Изображение товара">
-    <div>
-      <label for="product1">Название товара</label>
-      <span>100 руб</span>
-      <button>|+|</button>
-    </div>
+</div>
+
+<div id="productDetailsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeProductDetailsModal()">&times;</span>
+    <h2>Название товара</h2>
+    <%= image_tag("redapple.jpg", alt: "Rails logo") %>
+    <h3>Описание:</h3>
+    <p>Описание товара...</p>
+    <span>100 руб/кг</span>
+    <button>Добавить в корзину</button>
   </div>
-  <div>
-    <img src="placeholder.jpg" alt="Изображение товара">
-    <div>
-      <label for="product1">Название товара</label>
-      <span>100 руб</span>
-      <button>|+|</button>
-    </div>
-  </div>
-  <div>
-    <img src="placeholder.jpg" alt="Изображение товара">
-    <div>
-      <label for="product1">Название товара</label>
-      <span>100 руб</span>
-      <button>|+|</button>
-    </div>
-  </div>
-  <div>
-    <img src="placeholder.jpg" alt="Изображение товара">
-    <div>
-      <label for="product1">Название товара</label>
-      <span>100 руб</span>
-      <button>|+|</button>
-    </div>
-  </div>
-  <div>
-    <img src="placeholder.jpg" alt="Изображение товара">
-    <div>
-      <label for="product1">Название товара</label>
-      <span>100 руб</span>
-      <button>|+|</button>
-    </div>
-  </div>
-  <!-- Повторите блок выше для остальных товаров -->
 </div>
 </body>
 
@@ -80,56 +44,77 @@
     a:active {
         background-color: #d4d4d4;
     }
-
     body {
         font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
+        background-color: #f4f4f4;
+        padding: 20px;
     }
 
-    h1 {
+    .product {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        border: 5px solid #d8ffba;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product img {
+        width: 150px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .details {
         text-align: center;
     }
 
-    button {
-        margin: 5px;
+    .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fefefe;
+        padding: 50px;
+        text-align: center;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
-    div {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    img {
-        width: 100px;
-        height: 100px;
-        border: 1px solid #b4b4b4;
-        border-radius: 1px;
-    }
-
-    div > div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 10px;
-    }
-
-    label {
-        margin-top: 5px;
-        font-weight: bold;
-    }
-
-    span {
-        margin-top: 5px;
-        font-weight: bold;
-    }
-
-    button {
-        margin-top: 5px;
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
         cursor: pointer;
-        border: 5px solid #00ff8a;
-        border-radius: 1px;
+    }
+
+    button {
+        width: 50%;
+        padding: 1px;
+        background-color: #4caf50;
+        color: #e7ffcd;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
     }
 </style>
 
 </html>
+
+<%= javascript_tag do %>
+  // Отображение модального окна
+  function showProductDetails() {
+  var modal = document.getElementById("productDetailsModal");
+  modal.style.display = "block";
+  }
+
+  // Закрытие модального окна
+  function closeProductDetailsModal() {
+  var modal = document.getElementById("productDetailsModal");
+  modal.style.display = "none";
+  }
+<% end %>
