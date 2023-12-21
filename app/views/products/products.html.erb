@@ -43,26 +43,33 @@
 </main>
 
 <script>
-  let cards = document.querySelectorAll(".card")
-  for (let i = 0; i < cards.length; i++) {
-      let card = cards[i]
-      card.onclick = () => {
-          let id = card.dataset.id
-          let modalClass = `.modal-${id}`
-          let modal = document.querySelector(modalClass)
-          modal.classList.remove("hidden")
+  window.addEventListener("load", function (){
+      let cards = document.querySelectorAll(".card")
+      for (let i = 0; i < cards.length; i++) {
+          let card = cards[i]
+          card.onclick = (e) => {
+              if (e.target?.tagName == "A") return
+              let id = card.dataset.id
+              let modalClass = `.modal-${id}`
+              let modal = document.querySelector(modalClass)
+              modal.classList.remove("hidden")
+          }
       }
-  }
-  let crosses = document.querySelectorAll(".cross")
-  for (let i = 0; i < crosses.length; i++) {
-      let cross = crosses[i]
-      cross.onclick = () => {
-          let id = cross.dataset.id
-          let modalClass = `.modal-${id}`
-          let modal = document.querySelector(modalClass)
-          modal.classList.add("hidden")
+
+      let crosses = document.querySelectorAll(".cross")
+      for (let i = 0; i < crosses.length; i++) {
+          let cross = crosses[i]
+          cross.onclick = () => {
+              let id = cross.dataset.id
+              let modalClass = `.modal-${id}`
+              let modal = document.querySelector(modalClass)
+              modal.classList.add("hidden")
+          }
       }
-  }
+
+
+  })
+
 </script>
 </body>
 </html>
