@@ -15,31 +15,48 @@
       <h1 class="text-2xl">Мой заказ</h1>
     </div>
     <div class="grid grid-cols-2 gap-4 mb-6">
-
+      <%- @cart_part.select { |cart_part| cart_part.good_id == 1 }.each do |cart_part| %>
+        <%- @goods.select { |good| good.id == cart_part.good_id }.each do |good| %>
       <div class="flex flex-row gap-10 bg-[#EBF2E7] py-3 px-14 rounded-md relative">
         <div>
           <%= image_tag("redapple.jpg", class: "w-32 rounded-md", alt: "good") %>
         </div>
+
         <div class="flex flex-col">
           <h3 class="font-medium text-xl mb-3.5 leading-[15px]"><%= "яблоки" %></h3>
           <div class="flex flex-row mb-5">
-            <button class="bg-white rounded-l-md text-2xl h-[20px] leading-[15px] flex justify-center w-[30px]">-</button>
-            <span class="bg-white text-lg h-[20px] leading-[19px] flex justify-center w-[30px]">3</span>
-            <button class="bg-white rounded-r-md text-2xl h-[20px] leading-[15px] flex justify-center w-[30px]">+</button>
+            <button class="bg-white rounded-l-md text-2xl h-[20px] leading-[15px] flex justify-center w-[30px]">
+              <%= link_to '-', remove_item_path(id: cart_part.id), method: :get %>
+            </button>
+            <span class="bg-white text-lg h-[20px] leading-[19px] flex justify-center w-[30px]">
+              <%=1%>
+            </span>
+            <button class="bg-white rounded-r-md text-2xl h-[20px] leading-[15px] flex justify-center w-[30px]">
+              <%= link_to '+', additem_cart_path(good_id: good.id), method: :get %>
+            </button>
           </div>
-          <span><%= "100 руб" %></span>
+
+          <span><%=good.price.to_i%> руб</span>
         </div>
         <%= image_tag("icon_trash.svg", class: "w-4 absolute right-14 bottom-4 cursor-pointer", alt: "trash") %>
       </div>
-
+        <% end %>
+      <% end %>
     </div>
+
+    <% total_price = 0 %>
+    <% @cart_part.select { |cart_part| cart_part.user_id == 1 }.each do |cart_part| %>
+      <% @goods.each do |good| %>
+        <% total_price += good.price %>
+      <% end %>
+    <% end %>
 
     <div class="w-1/2 flex flex-col">
       <span class="text-2xl mb-4 block">Сумма заказа:</span>
 
       <div class="flex flex-row justify-between mb-2">
         <span class="text-xl">Стоимость товаров:</span>
-        <span>200 руб</span>
+        <span><%=total_price.to_i - 100 %> руб</span>
       </div>
 
       <div class="flex flex-row justify-between mb-4">
@@ -49,7 +66,7 @@
 
       <div class="text-2xl flex flex-row justify-between mb-6">
         <span>ИТОГО:</span>
-        <span>300 руб</span>
+        <span><%=total_price.to_i %> руб</span>
       </div>
 
       <%= link_to 'ОФОРМИТЬ ЗАКАЗ', '/thanks', class: "bg-[#D7E8CF] rounded-md self-start grow-0 px-12 text-xl flex h-[45px] leading-[45px]", method: :get %>
