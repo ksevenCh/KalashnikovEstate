@@ -40,11 +40,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_20_002956) do
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "login", null: false
+    t.string "password"
     t.string "phone_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
-    t.string "password", array: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["login"], name: "index_users_on_login", unique: true
     t.index ["phone_num"], name: "index_users_on_phone_num", unique: true
