@@ -18,10 +18,10 @@ Rails.application.routes.draw do
   get '/products', to: 'products#index'
   get '/catalog', to: 'products#catalog'
 
-
-  get '/cart', to: 'cart#index'
   get '/mycart', to: 'cart#cart'
   get '/additem', to: 'cart#additem'
+  get '/additem_cart', to: 'cart#additem_cart'
+  get '/remove_item', to: 'cart#remove_item'
 
   get '/thank_you', to: 'thank_you#index'
   get '/thanks', to: 'thank_you#thank_you'

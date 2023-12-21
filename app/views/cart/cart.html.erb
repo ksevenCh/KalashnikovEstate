@@ -11,20 +11,31 @@
 <%= link_to 'Каталог товаров', '/catalog', method: :get %>
 <%= link_to 'Мой заказ', '/mycart', method: :get %>
 <div class="product">
-  <img src="placeholder.jpg" alt="Изображение товара">
-  <div class="product-info">
-    <h2>Название товара</h2>
-    <div class="counter">
-      <button>-</button>
-      <span>0</span>
-      <button>+</button>
-    </div>
-    <p class="price">100 руб</p>
-  </div>
+  <ul>
+    <%- @cart_part.select { |cart_part| cart_part.good_id == 1 }.each do |cart_part| %>
+    <%- @goods.select { |good| good.id == cart_part.good_id }.each do |good| %>
+      <li>
+        <%= "#{good.nomenclature}" %>
+        <%= image_tag("redapple.jpg", alt: "Rails logo") %>
+        <p><%= "#{good.price} #{good.measure}" %></p>
+        <button><%= link_to '+', additem_cart_path(good_id: good.id), method: :get %></button>
+        <button><%= link_to '-', remove_item_path(id: cart_part.id), method: :get %></button>
+      </li>
+    <% end %>
+    <% end %>
+
+    <% total_price = 0 %>
+    <% @cart_part.select { |cart_part| cart_part.user_id == 1 }.each do |cart_part| %>
+      <% @goods.each do |good| %>
+        <% total_price += good.price %>
+      <% end %>
+    <% end %>
+    <p class="price"><%= "Стоимость всех товаров: #{total_price} руб" %></p>
+
+  </ul>
 </div>
 <!-- Повторите блок выше для остальных товаров -->
 <h2>Сумма заказа</h2>
-<p>Стоимость товаров: <span id="total-price">0</span> руб</p>
 <%= link_to 'Оформить заказ', '/thanks', method: :get %>
 </body>
 
@@ -45,7 +56,7 @@
         color: #000;
         font-weight: bold;
         padding: 10px 20px;
-        background-color: #b4b4b4;
+        background-color: #d8ffba;
         border-radius: 5px;
         transition: background-color 0.3s ease;
     }
@@ -113,8 +124,8 @@
         margin: 20px auto;
         padding: 10px 20px;
         border: none;
-        background-color: #ff0000;
-        color: #fff;
+        background-color: #00ff8a;
+        color: #000000;
         font-size: 16px;
         cursor: pointer;
         border-radius: 5px;
