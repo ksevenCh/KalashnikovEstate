@@ -1,130 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Мой заказ</title>
-</head>
 <body>
-<h1>Мой заказ</h1>
-<%= link_to 'Каталог товаров', '/catalog', method: :get %>
-<%= link_to 'Мой заказ', '/mycart', method: :get %>
-<div class="product">
-  <img src="placeholder.jpg" alt="Изображение товара">
-  <div class="product-info">
-    <h2>Название товара</h2>
-    <div class="counter">
-      <button>-</button>
-      <span>0</span>
-      <button>+</button>
-    </div>
-    <p class="price">100 руб</p>
+<header>
+  <div class="container mx-auto flex flex-row justify-between items-center my-4">
+    <%= image_tag("Logo.svg", alt: "Logo", class: "w-28") %>
+    <%= link_to 'Каталог товаров', '/catalog', class: "block py-3", method: :get %>
+    <%= link_to 'Мой заказ', '/mycart', class: "block py-3", method: :get %>
+    <span class="block py-3">Контакты</span>
   </div>
-</div>
-<!-- Повторите блок выше для остальных товаров -->
-<h2>Сумма заказа</h2>
-<p>Стоимость товаров: <span id="total-price">0</span> руб</p>
-<%= link_to 'Оформить заказ', '/thanks', method: :get %>
+</header>
+<main>
+  <div class="container mx-auto">
+    <div class="flex justify-center border-b border-black pb-5 mb-5">
+      <h1 class="text-2xl">Мой заказ</h1>
+    </div>
+    <div class="grid grid-cols-2 gap-4 mb-6">
+
+      <div class="flex flex-row gap-10 bg-[#EBF2E7] py-3 px-14 rounded-md relative">
+        <div>
+          <%= image_tag("redapple.jpg", class: "w-32 rounded-md", alt: "good") %>
+        </div>
+        <div class="flex flex-col">
+          <h3 class="font-medium text-xl mb-3.5 leading-[15px]"><%= "яблоки" %></h3>
+          <div class="flex flex-row mb-5">
+            <button class="bg-white rounded-l-md text-2xl h-[20px] leading-[15px] flex justify-center w-[30px]">-</button>
+            <span class="bg-white text-lg h-[20px] leading-[19px] flex justify-center w-[30px]">3</span>
+            <button class="bg-white rounded-r-md text-2xl h-[20px] leading-[15px] flex justify-center w-[30px]">+</button>
+          </div>
+          <span><%= "100 руб" %></span>
+        </div>
+        <%= image_tag("icon_trash.svg", class: "w-4 absolute right-14 bottom-4 cursor-pointer", alt: "trash") %>
+      </div>
+
+    </div>
+
+    <div class="w-1/2 flex flex-col">
+      <span class="text-2xl mb-4 block">Сумма заказа:</span>
+
+      <div class="flex flex-row justify-between mb-2">
+        <span class="text-xl">Стоимость товаров:</span>
+        <span>200 руб</span>
+      </div>
+
+      <div class="flex flex-row justify-between mb-4">
+        <span class="text-xl">Стоимость доставки:</span>
+        <span>100 руб</span>
+      </div>
+
+      <div class="text-2xl flex flex-row justify-between mb-6">
+        <span>ИТОГО:</span>
+        <span>300 руб</span>
+      </div>
+
+      <%= link_to 'ОФОРМИТЬ ЗАКАЗ', '/thanks', class: "bg-[#D7E8CF] rounded-md self-start grow-0 px-12 text-xl flex h-[45px] leading-[45px]", method: :get %>
+    </div>
+  </div>
+</main>
 </body>
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-    }
-
-    h1 {
-        text-align: center;
-    }
-
-    a {
-        text-decoration: none;
-        color: #000;
-        font-weight: bold;
-        padding: 10px 20px;
-        background-color: #b4b4b4;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-    }
-
-    a:hover {
-        background-color: #e4e4e4;
-    }
-
-    a:active {
-        background-color: #d4d4d4;
-    }
-
-    .product {
-        display: flex;
-        margin: 20px;
-        background-color: #fff;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .product img {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-        margin-right: 20px;
-    }
-
-    .product-info {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .counter {
-        display: flex;
-        align-items: center;
-        margin-top: 10px;
-    }
-
-    .counter button {
-        padding: 5px 10px;
-        margin: 0 5px;
-        border: 1px solid #000;
-        cursor: pointer;
-    }
-
-    h2 {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .price {
-        font-weight: bold;
-    }
-
-    #total-price {
-        font-weight: bold;
-        color: #ff0000;
-        font-size: 20px;
-        margin: 0 5px;
-    }
-
-    button {
-        display: block;
-        margin: 20px auto;
-        padding: 10px 20px;
-        border: none;
-        background-color: #ff0000;
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 5px;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-        transition: background-color 0.3s;
-    }
-
-    button:hover {
-        background-color: #cc0000;
-    }
-</style>
-
 </html>
