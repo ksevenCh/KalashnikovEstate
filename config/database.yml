@@ -23,3 +23,4 @@ production:
   database: kalashnikov_estate_production
   username: <%= ENV["KALASHNIKOV_ESTATE_DATABASE_USERNAME"] %>
   password: <%= ENV["KALASHNIKOV_ESTATE_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
