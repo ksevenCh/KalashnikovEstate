@@ -8,18 +8,18 @@ default: &default
 development:
   <<: *default
   database: kalashnikov_estate_development
-  username: <%= ENV["KALASHNIKOV_ESTATE_DATABASE_USERNAME"] %>
-  password: <%= ENV["KALASHNIKOV_ESTATE_DATABASE_PASSWORD"] %>
+  username: <%= ENV["KALASHNIKOV_ESTATE_DATABASE_USERNAME_DEV"] %>
+  password: <%= ENV["KALASHNIKOV_ESTATE_DATABASE_PASSWORD_DEV"] %>
 
 
 test:
   <<: *default
   database: kalashnikov_estate_test
-  username: <%= ENV["KALASHNIKOV_ESTATE_DATABASE_USERNAME"] %>
-  password: <%= ENV["KALASHNIKOV_ESTATE_DATABASE_PASSWORD"] %>
+  username: <%= ENV["KALASHNIKOV_ESTATE_DATABASE_USERNAME_DEV"] %>
+  password: <%= ENV["KALASHNIKOV_ESTATE_DATABASE_PASSWORD_DEV"] %>
 
 production:
   <<: *default
   database: kalashnikov_estate_production
-  username: kalashnikov_estate
+  username: <%= ENV["KALASHNIKOV_ESTATE_DATABASE_USERNAME"] %>
   password: <%= ENV["KALASHNIKOV_ESTATE_DATABASE_PASSWORD"] %>
